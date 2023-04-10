@@ -1,0 +1,8 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "antlr-4.9.1-complete.jar"
+  ],
+  "rpc.enabled": false,
+  "java.debug.settings.onBuildFailureProceed": true
+}
