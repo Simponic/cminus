@@ -10,13 +10,13 @@ package submit.ast;
  */
 public enum VarType {
 
-  INT("int"), BOOL("bool"), CHAR("char");
+  INT("int"),
+  BOOL("bool"),
+  CHAR("char");
 
   private final String value;
 
-  private VarType(String value) {
-    this.value = value;
-  }
+  private VarType(String value) { this.value = value; }
 
   public static VarType fromString(String s) {
     for (VarType vt : VarType.values()) {
@@ -31,5 +31,4 @@ public enum VarType {
   public String toString() {
     return value;
   }
-
 }

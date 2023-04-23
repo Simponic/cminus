@@ -4,6 +4,10 @@
  */
 package submit.ast;
 
+import submit.MIPSResult;
+import submit.RegisterAllocator;
+import submit.SymbolTable;
+
 /**
  *
  * @author edwajohn
@@ -30,4 +34,25 @@ public class Assignment extends AbstractNode implements Expression {
     }
   }
 
+  public MIPSResult toMIPS(StringBuilder code, StringBuilder data,
+                           SymbolTable symbolTable,
+                           RegisterAllocator regAllocator) {
+    MIPSResult mut = mutable.toMIPS(code, data, symbolTable, regAllocator);
+    MIPSResult result = rhs.toMIPS(code, data, symbolTable, regAllocator);
+
+    String registerWithAddressOfMutable = mut.getAddress();
+
+    if (result.getRegister() != null) {
+      code.append(String.format("sw %s 0(%s)\n", result.getRegister(),
+                                registerWithAddressOfMutable));
+      regAllocator.clear(result.getRegister());
+    } else if (result.getAddress() != null) {
+      regAllocator.loadIntoRegister(result, code, result.getAddress());
+      regAllocator.clear(result.getAddress());
+    }
+
+    regAllocator.clear(registerWithAddressOfMutable);
+
+    return MIPSResult.createVoidResult();
+  }
 }

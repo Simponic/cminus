@@ -6,6 +6,9 @@ package submit.ast;
 
 import java.util.ArrayList;
 import java.util.List;
+import submit.MIPSResult;
+import submit.RegisterAllocator;
+import submit.SymbolTable;
 
 /**
  *
@@ -33,4 +36,14 @@ public class Program extends AbstractNode implements Node {
     }
   }
 
+  @Override
+  public MIPSResult toMIPS(StringBuilder code, StringBuilder data,
+                           SymbolTable symbolTable,
+                           RegisterAllocator regAllocator) {
+    data.append("newline: .asciiz \"\\n\"\n");
+
+    for (Declaration declaration : declarations)
+      declaration.toMIPS(code, data, symbolTable, regAllocator);
+    return MIPSResult.createVoidResult();
+  }
 }

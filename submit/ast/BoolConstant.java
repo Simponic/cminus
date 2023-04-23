@@ -9,12 +9,9 @@ package submit.ast;
  * @author edwajohn
  */
 public class BoolConstant extends AbstractNode implements Expression {
-
   private final boolean value;
 
-  public BoolConstant(boolean value) {
-    this.value = value;
-  }
+  public BoolConstant(boolean value) { this.value = value; }
 
   public void toCminus(StringBuilder builder, final String prefix) {
     if (value) {
@@ -23,5 +20,4 @@ public class BoolConstant extends AbstractNode implements Expression {
       builder.append("false");
     }
   }
-
 }

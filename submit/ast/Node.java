@@ -5,7 +5,8 @@ import submit.RegisterAllocator;
 import submit.SymbolTable;
 
 public interface Node {
-    void toCminus(StringBuilder builder, final String prefix);
+  void toCminus(StringBuilder builder, final String prefix);
 
-    MIPSResult toMIPS(StringBuilder code, StringBuilder data, SymbolTable symbolTable, RegisterAllocator regAllocator);
+  MIPSResult toMIPS(StringBuilder code, StringBuilder data,
+                    SymbolTable symbolTable, RegisterAllocator regAllocator);
 }

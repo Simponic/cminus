@@ -57,5 +57,4 @@ public class MIPSResult {
   public VarType getType() {
     return type;
   }
-
 }

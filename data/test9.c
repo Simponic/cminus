@@ -19,7 +19,7 @@ void main() {
   if (a == 3) {
     println("4 correct");
   }
-  if (a >= 4) {
+  if (a != 4) {
     println("5 not correct");
   } else {
     println("5 correct");

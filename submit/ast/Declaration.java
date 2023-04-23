@@ -8,6 +8,4 @@ package submit.ast;
  *
  * @author edwajohn
  */
-public interface Declaration extends Statement {
-
-}
+public interface Declaration extends Statement {}

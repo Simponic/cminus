@@ -8,6 +8,4 @@ package submit.ast;
  *
  * @author edwajohn
  */
-public interface Expression extends Node {
-
-}
+public interface Expression extends Node {}

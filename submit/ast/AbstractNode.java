@@ -10,6 +10,6 @@ public class AbstractNode implements Node {
 
     public MIPSResult toMIPS(StringBuilder code, StringBuilder data, SymbolTable symbolTable,
             RegisterAllocator regAllocator) {
-        return null;
+        return MIPSResult.createVoidResult();
     }
 }

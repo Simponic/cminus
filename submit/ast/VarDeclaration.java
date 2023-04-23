@@ -18,7 +18,8 @@ public class VarDeclaration extends AbstractNode implements Declaration {
   private final List<Integer> arraySizes;
   private final boolean isStatic;
 
-  public VarDeclaration(VarType type, List<String> ids, List<Integer> arraySizes, boolean isStatic) {
+  public VarDeclaration(VarType type, List<String> ids,
+                        List<Integer> arraySizes, boolean isStatic) {
     this.type = type;
     this.ids = new ArrayList<>(ids);
     this.arraySizes = arraySizes;
@@ -35,7 +36,8 @@ public class VarDeclaration extends AbstractNode implements Declaration {
       final String id = ids.get(i);
       final int arraySize = arraySizes.get(i);
       if (arraySize >= 0) {
-        builder.append(id).append("[").append(arraySize).append("]").append(", ");
+        builder.append(id).append("[").append(arraySize).append("]").append(
+            ", ");
       } else {
         builder.append(id).append(", ");
       }
@@ -43,5 +45,4 @@ public class VarDeclaration extends AbstractNode implements Declaration {
     builder.delete(builder.length() - 2, builder.length());
     builder.append(";\n");
   }
-
 }

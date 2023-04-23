@@ -10,15 +10,23 @@ package submit.ast;
  */
 public enum BinaryOperatorType {
 
-  OR("||"), AND("&&"),
-  LE("<="), LT("<"), GT(">"), GE(">="), EQ("=="), NE("!="),
-  PLUS("+"), MINUS("-"), TIMES("*"), DIVIDE("/"), MOD("%");
+  OR("||"),
+  AND("&&"),
+  LE("<="),
+  LT("<"),
+  GT(">"),
+  GE(">="),
+  EQ("=="),
+  NE("!="),
+  PLUS("+"),
+  MINUS("-"),
+  TIMES("*"),
+  DIVIDE("/"),
+  MOD("%");
 
   private final String value;
 
-  private BinaryOperatorType(String value) {
-    this.value = value;
-  }
+  private BinaryOperatorType(String value) { this.value = value; }
 
   public static BinaryOperatorType fromString(String s) {
     for (BinaryOperatorType at : BinaryOperatorType.values()) {
@@ -26,12 +34,12 @@ public enum BinaryOperatorType {
         return at;
       }
     }
-    throw new RuntimeException("Illegal string in OperatorType.fromString(): " + s);
+    throw new RuntimeException("Illegal string in OperatorType.fromString(): " +
+                               s);
   }
 
   @Override
   public String toString() {
     return value;
   }
-
 }

@@ -20,17 +20,11 @@ public class Param extends AbstractNode implements Node {
     this.array = array;
   }
 
-  public VarType getType() {
-    return type;
-  }
+  public VarType getType() { return type; }
 
-  public String getId() {
-    return id;
-  }
+  public String getId() { return id; }
 
-  public boolean isArray() {
-    return array;
-  }
+  public boolean isArray() { return array; }
 
   public void toCminus(StringBuilder builder, final String prefix) {
     if (isArray()) {
@@ -39,5 +33,4 @@ public class Param extends AbstractNode implements Node {
       builder.append(type).append(" ").append(id);
     }
   }
-
 }

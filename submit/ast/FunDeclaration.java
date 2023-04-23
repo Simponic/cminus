@@ -6,6 +6,9 @@ package submit.ast;
 
 import java.util.ArrayList;
 import java.util.List;
+import submit.MIPSResult;
+import submit.RegisterAllocator;
+import submit.SymbolTable;
 
 /**
  *
@@ -19,7 +22,7 @@ public class FunDeclaration extends AbstractNode implements Declaration {
   private final Statement statement;
 
   public FunDeclaration(VarType returnType, String id, List<Param> params,
-      Statement statement) {
+                        Statement statement) {
     this.returnType = returnType;
     this.id = id;
     this.params = new ArrayList<>(params);
@@ -43,4 +46,20 @@ public class FunDeclaration extends AbstractNode implements Declaration {
     statement.toCminus(builder, prefix);
   }
 
+  @Override
+  public MIPSResult toMIPS(StringBuilder code, StringBuilder data,
+                           SymbolTable symbolTable,
+                           RegisterAllocator regAllocator) {
+    code.append(id).append(":\n");
+
+    statement.toMIPS(code, data, symbolTable, regAllocator);
+
+    if (id.equals("main"))
+      code.append("li $v0 10\nsyscall\n");
+    else
+      code.append("jr $ra\n");
+    regAllocator.clearAll();
+
+    return MIPSResult.createVoidResult();
+  }
 }
